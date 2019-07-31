@@ -1,0 +1,14 @@
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\bin\Debug\netcoreapp2.1\Inventario2019.deps.json
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\bin\Debug\netcoreapp2.1\Inventario2019.runtimeconfig.json
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\bin\Debug\netcoreapp2.1\Inventario2019.runtimeconfig.dev.json
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\bin\Debug\netcoreapp2.1\Inventario2019.dll
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.csprojAssemblyReference.cache
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.csproj.CoreCompileInputs.cache
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.RazorAssemblyInfo.cache
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.RazorAssemblyInfo.cs
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.AssemblyInfoInputs.cache
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.AssemblyInfo.cs
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.RazorTargetAssemblyInfo.cache
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\bin\Debug\netcoreapp2.1\Inventario2019.pdb
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.dll
+C:\Users\Ludwing\Desktop\API-ProyFinal\InventarioAPI\Inventario2019\obj\Debug\netcoreapp2.1\Inventario2019.pdb
