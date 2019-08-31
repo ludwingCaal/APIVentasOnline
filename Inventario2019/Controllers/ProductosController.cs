@@ -2,6 +2,8 @@
 using Inventario2019.Contexts;
 using Inventario2019.Entities;
 using Inventario2019.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,6 +15,7 @@ namespace Inventario2019.Controllers
 {
 	[Route("api/v1/[controller]")]
 	[ApiController]
+	[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 	public class ProductosController : ControllerBase
 	{
 		private readonly InventarioDBContext inventarioDBContext;

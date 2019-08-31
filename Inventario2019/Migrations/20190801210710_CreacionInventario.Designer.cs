@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inventario2019.Migrations
 {
     [DbContext(typeof(InventarioDBContext))]
-    [Migration("20190727062933_Producto")]
-    partial class Producto
+    [Migration("20190801210710_CreacionInventario")]
+    partial class CreacionInventario
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,11 +40,14 @@ namespace Inventario2019.Migrations
                     b.Property<string>("Nit")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Direccion");
+                    b.Property<string>("Direccion")
+                        .IsRequired();
 
-                    b.Property<string>("Dpi");
+                    b.Property<string>("Dpi")
+                        .IsRequired();
 
-                    b.Property<string>("Nombre");
+                    b.Property<string>("Nombre")
+                        .IsRequired();
 
                     b.HasKey("Nit");
 
@@ -74,7 +77,7 @@ namespace Inventario2019.Migrations
 
             modelBuilder.Entity("Inventario2019.Entities.DetalleCompra", b =>
                 {
-                    b.Property<int>("IdCompra")
+                    b.Property<int>("IdDetalle")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -82,17 +85,15 @@ namespace Inventario2019.Migrations
 
                     b.Property<int>("CodigoProducto");
 
-                    b.Property<int?>("CompraIdCompra");
-
-                    b.Property<int>("IdDetalle");
+                    b.Property<int>("IdCompra");
 
                     b.Property<decimal>("Precio");
 
-                    b.HasKey("IdCompra");
+                    b.HasKey("IdDetalle");
 
                     b.HasIndex("CodigoProducto");
 
-                    b.HasIndex("CompraIdCompra");
+                    b.HasIndex("IdCompra");
 
                     b.ToTable("DetalleCompra");
                 });
@@ -323,7 +324,8 @@ namespace Inventario2019.Migrations
 
                     b.HasOne("Inventario2019.Entities.Compra", "Compra")
                         .WithMany("DetalleCompras")
-                        .HasForeignKey("CompraIdCompra");
+                        .HasForeignKey("IdCompra")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Inventario2019.Entities.DetalleFactura", b =>

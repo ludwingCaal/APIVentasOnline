@@ -4,54 +4,35 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Inventario2019.Migrations
 {
-    public partial class Producto : Migration
+    public partial class CreacionInventario : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Categoria",
+                columns: table => new
+                {
+                    CodigoCategoria = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Descripcion = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categoria", x => x.CodigoCategoria);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Cliente",
                 columns: table => new
                 {
                     Nit = table.Column<string>(nullable: false),
-                    Dpi = table.Column<string>(nullable: true),
-                    Nombre = table.Column<string>(nullable: true),
-                    Direccion = table.Column<string>(nullable: true)
+                    Dpi = table.Column<string>(nullable: false),
+                    Nombre = table.Column<string>(nullable: false),
+                    Direccion = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cliente", x => x.Nit);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Producto",
-                columns: table => new
-                {
-                    CodigoProducto = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CodigoCategoria = table.Column<int>(nullable: false),
-                    CodigoEmpaque = table.Column<int>(nullable: false),
-                    Descripcion = table.Column<string>(nullable: true),
-                    PrecioUnitario = table.Column<decimal>(nullable: false),
-                    PrecioPorDocena = table.Column<decimal>(nullable: false),
-                    PrecioPorMayor = table.Column<decimal>(nullable: false),
-                    Exixtencia = table.Column<int>(nullable: false),
-                    Imagen = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Producto", x => x.CodigoProducto);
-                    table.ForeignKey(
-                        name: "FK_Producto_Categoria_CodigoCategoria",
-                        column: x => x.CodigoCategoria,
-                        principalTable: "Categoria",
-                        principalColumn: "CodigoCategoria",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Producto_TipoEmpaque_CodigoEmpaque",
-                        column: x => x.CodigoEmpaque,
-                        principalTable: "TipoEmpaque",
-                        principalColumn: "CodigoEmpaque",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,6 +50,19 @@ namespace Inventario2019.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Proveedor", x => x.CodigoProveedor);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoEmpaque",
+                columns: table => new
+                {
+                    CodigoEmpaque = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Descripcion = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoEmpaque", x => x.CodigoEmpaque);
                 });
 
             migrationBuilder.CreateTable(
@@ -131,30 +125,6 @@ namespace Inventario2019.Migrations
                         principalTable: "Cliente",
                         principalColumn: "Nit",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Inventario",
-                columns: table => new
-                {
-                    CodigoInventario = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    CodigoProducto = table.Column<int>(nullable: false),
-                    Fecha = table.Column<DateTime>(nullable: false),
-                    TipoRegistro = table.Column<string>(nullable: true),
-                    Precio = table.Column<decimal>(nullable: false),
-                    Entradas = table.Column<int>(nullable: false),
-                    Salidas = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Inventario", x => x.CodigoInventario);
-                    table.ForeignKey(
-                        name: "FK_Inventario_Producto_CodigoProducto",
-                        column: x => x.CodigoProducto,
-                        principalTable: "Producto",
-                        principalColumn: "CodigoProducto",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,6 +191,66 @@ namespace Inventario2019.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Producto",
+                columns: table => new
+                {
+                    CodigoProducto = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CodigoCategoria = table.Column<int>(nullable: false),
+                    CodigoEmpaque = table.Column<int>(nullable: false),
+                    Descripcion = table.Column<string>(nullable: true),
+                    PrecioUnitario = table.Column<decimal>(nullable: false),
+                    PrecioPorDocena = table.Column<decimal>(nullable: false),
+                    PrecioPorMayor = table.Column<decimal>(nullable: false),
+                    Exixtencia = table.Column<int>(nullable: false),
+                    Imagen = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Producto", x => x.CodigoProducto);
+                    table.ForeignKey(
+                        name: "FK_Producto_Categoria_CodigoCategoria",
+                        column: x => x.CodigoCategoria,
+                        principalTable: "Categoria",
+                        principalColumn: "CodigoCategoria",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Producto_TipoEmpaque_CodigoEmpaque",
+                        column: x => x.CodigoEmpaque,
+                        principalTable: "TipoEmpaque",
+                        principalColumn: "CodigoEmpaque",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DetalleCompra",
+                columns: table => new
+                {
+                    IdDetalle = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    IdCompra = table.Column<int>(nullable: false),
+                    CodigoProducto = table.Column<int>(nullable: false),
+                    Cantidad = table.Column<int>(nullable: false),
+                    Precio = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetalleCompra", x => x.IdDetalle);
+                    table.ForeignKey(
+                        name: "FK_DetalleCompra_Producto_CodigoProducto",
+                        column: x => x.CodigoProducto,
+                        principalTable: "Producto",
+                        principalColumn: "CodigoProducto",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DetalleCompra_Compra_IdCompra",
+                        column: x => x.IdCompra,
+                        principalTable: "Compra",
+                        principalColumn: "IdCompra",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DetalleFactura",
                 columns: table => new
                 {
@@ -251,32 +281,27 @@ namespace Inventario2019.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "DetalleCompra",
+                name: "Inventario",
                 columns: table => new
                 {
-                    IdDetalle = table.Column<int>(nullable: false),
-                    IdCompra = table.Column<int>(nullable: false)
+                    CodigoInventario = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CodigoProducto = table.Column<int>(nullable: false),
-                    Cantidad = table.Column<int>(nullable: false),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    TipoRegistro = table.Column<string>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
-                    CompraIdCompra = table.Column<int>(nullable: true)
+                    Entradas = table.Column<int>(nullable: false),
+                    Salidas = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DetalleCompra", x => x.IdCompra);
+                    table.PrimaryKey("PK_Inventario", x => x.CodigoInventario);
                     table.ForeignKey(
-                        name: "FK_DetalleCompra_Producto_CodigoProducto",
+                        name: "FK_Inventario_Producto_CodigoProducto",
                         column: x => x.CodigoProducto,
                         principalTable: "Producto",
                         principalColumn: "CodigoProducto",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_DetalleCompra_Compra_CompraIdCompra",
-                        column: x => x.CompraIdCompra,
-                        principalTable: "Compra",
-                        principalColumn: "IdCompra",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -290,9 +315,9 @@ namespace Inventario2019.Migrations
                 column: "CodigoProducto");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleCompra_CompraIdCompra",
+                name: "IX_DetalleCompra_IdCompra",
                 table: "DetalleCompra",
-                column: "CompraIdCompra");
+                column: "IdCompra");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DetalleFactura_NumeroFactura",
@@ -382,6 +407,12 @@ namespace Inventario2019.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "Categoria");
+
+            migrationBuilder.DropTable(
+                name: "TipoEmpaque");
         }
     }
 }
