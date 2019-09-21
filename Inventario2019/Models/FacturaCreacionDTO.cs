@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Inventario2019.Models
 {
-	public class TipoEmpaqueDTO
+	public class FacturaCreacionDTO
 	{
-		public int CodigoEmpaque { get; set; }
 		[Required]
-		public string Descripcion { get; set; }
-		public List<ProductoDTO> Productos { get; set; }
+		public string Nit { get; set; }
+		[Required]
+		public DateTime Fecha { get; set; }
+		[Required]
+		public decimal Total { get; set; }
 	}
 }

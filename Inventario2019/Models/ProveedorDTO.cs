@@ -19,7 +19,7 @@ namespace Inventario2019.Models
 		public string PaginaWeb { get; set; }
 		[Required]
 		public string ContactoPrincipal { get; set; }
-		//public List<EmailProveedorDTO> EmailProveedores { get; set; }
+		public List<EmailProveedorDTO> EmailProveedores { get; set; }
 		//public List<TelefonoProveedorDTO> TelefonosProveedores { get; set; }
 		public List<CompraDTO> Compras { get; set; }
 	}

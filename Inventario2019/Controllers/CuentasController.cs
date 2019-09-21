@@ -17,13 +17,13 @@ namespace Inventario2019.Controllers
 	[ApiController]
 	public class CuentasController:ControllerBase
 	{
-		private readonly UserManager<ApplicationUser> _userManager;
+		private readonly UserManager<ApplicationUser> _userManager; //para autenticar la BD.
 		private readonly SignInManager<ApplicationUser> _signManager;
 		private readonly IConfiguration _configuration;
 
-		public CuentasController(UserManager<ApplicationUser> userManager,
-			SignInManager<ApplicationUser> signManager,
-			IConfiguration configuration)
+		public CuentasController(UserManager<ApplicationUser> userManager, //objeto a inyectar
+			SignInManager<ApplicationUser> signManager,//objeto a inyectar
+			IConfiguration configuration)//objeto a inyectar
 		{
 			this._userManager = userManager;
 			this._signManager = signManager;
@@ -31,7 +31,7 @@ namespace Inventario2019.Controllers
 		}
 
 		[HttpPost("Crear")]
-		public async Task<ActionResult<UserToken>> CreateUser([FromBody]UserInfo model)
+	 	public async Task<ActionResult<UserToken>> CreateUser([FromBody]UserInfo model)
 		{
 			var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 			var result = await _userManager.CreateAsync(user, model.Password);
@@ -43,7 +43,7 @@ namespace Inventario2019.Controllers
 			{
 				return BadRequest("Username or password invalid");
 			}
-		}
+		} 
 
 		//metodo para validar el login
 		[HttpPost("Login")]
@@ -63,7 +63,7 @@ namespace Inventario2019.Controllers
 
 		private UserToken BuildToken(UserInfo userInfo)
 		{
-			var claims = new[] //reclamadores
+			var claims = new[] //reclamadores, sirven para personalizar el token
 			{
 				new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
 				new Claim("CualquierValor","Valor de la llave"),

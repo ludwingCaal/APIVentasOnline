@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Inventario2019.Entities
+namespace Inventario2019.Models
 {
-	public class Factura
+	public class FacturaDTO
 	{
 		public int NumeroFactura { get; set; }
 		[Required]
@@ -15,7 +15,7 @@ namespace Inventario2019.Entities
 		public DateTime Fecha { get; set; }
 		[Required]
 		public decimal Total { get; set; }
-		public Cliente Cliente { get; set; }
-		public List<DetalleFactura> DetalleFacturas { get; set; }
+		public ClienteDTO Cliente { get; set; }
+		public List<DetalleFacturaDTO> DetalleFacturas { get; set; }
 	}
 }

@@ -9,6 +9,10 @@ namespace Inventario2019.Contexts
 {
 	public class InventarioDBContext:DbContext
 	{
+		public InventarioDBContext(DbContextOptions<InventarioDBContext> options) : base(options)
+		{
+
+		}
 		public DbSet<Categoria> Categorias { get; set;}
 		public DbSet<TipoEmpaque> TipoEmpaques { get; set; }
 		public DbSet<Producto> Productos { get; set; }
@@ -24,10 +28,7 @@ namespace Inventario2019.Contexts
 		public DbSet<Factura> Facturas { get; set; }
 		public DbSet<DetalleFactura> DetalleFacturas { get; set; }
 
-		public InventarioDBContext(DbContextOptions<InventarioDBContext> options) : base(options)
-		{
-
-		}
+		
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			modelBuilder.Entity<Categoria>().ToTable("Categoria")

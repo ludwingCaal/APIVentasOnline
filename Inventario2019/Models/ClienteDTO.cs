@@ -15,5 +15,8 @@ namespace Inventario2019.Models
 		public string Nombre { get; set; }
 		[Required]
 		public string Direccion { get; set; }
+		public List<FacturaDTO> Factura { get; set; }
+		public List<EmailClienteDTO> EmailClientes { get; set; }
+		public List<TelefonoClienteDTO> TelefonoClientes { get; set; }
 	}
 }

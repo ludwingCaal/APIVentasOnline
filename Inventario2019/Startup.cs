@@ -42,6 +42,8 @@ namespace Inventario2019
 				options.CreateMap<ProductoCreacionDTO, Producto>();
 				options.CreateMap<ClienteCreacionDTO, Cliente>();
 				options.CreateMap<DetalleCompraCreacionDTO, DetalleCompra>();
+				options.CreateMap<DetalleFacturaDTO, DetalleFactura>();
+				options.CreateMap<FacturaDTO, Factura>();
 				options.CreateMap<CompraCreacionDTO, Compra>();
 				options.CreateMap<ProveedorCreacionDTO, Proveedor>();
 			});
@@ -85,7 +87,7 @@ namespace Inventario2019
 
 			app.UseHttpsRedirection();
 			app.UseAuthentication();
-			app.UseCors(builder => builder.WithOrigins("*").WithMethods("*").WithHeaders("*"));//hace enlace a los dominios que dominios tendran permiso de acceso a nuestra appi.
+			app.UseCors(builder => builder.WithOrigins("*").WithMethods("*").WithHeaders("*"));//hace enlace a los dominios, que dominios tendran permiso de acceso a nuestra appi.
 			app.UseMvc();
 		}
 	}

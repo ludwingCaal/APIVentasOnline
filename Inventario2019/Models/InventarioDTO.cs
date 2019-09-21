@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Inventario2019.Entities
+namespace Inventario2019.Models
 {
-	public class Inventario
+	public class InventarioDTO
 	{
 		public int CodigoInventario { get; set; }
 		public int CodigoProducto { get; set; }
-		public Producto Producto { get; set; }
+		[Required]
 		public DateTime Fecha { get; set; }
 		[Required]
 		public string TipoRegistro { get; set; }
@@ -20,5 +20,6 @@ namespace Inventario2019.Entities
 		public int Entradas { get; set; }
 		[Required]
 		public int Salidas { get; set; }
+		public ProductoDTO Producto { get; set; }
 	}
 }

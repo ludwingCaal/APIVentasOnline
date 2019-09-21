@@ -8,6 +8,7 @@ namespace Inventario2019.Entities
 {
 	public class Cliente
 	{
+		[Required]
 		public string Nit { get; set; }
 		[Required]
 		public string Dpi { get; set; }

@@ -4,20 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Inventario2019.Entities
+namespace Inventario2019.Models
 {
-	public class DetalleCompra
+	public class DetalleFacturaCreacionDTO
 	{
-		public int IdDetalle { get; set; }
-		[Required]
-		public int IdCompra { get; set; }
+		public int NumeroFactura { get; set; }
 		[Required]
 		public int CodigoProducto { get; set; }
 		[Required]
 		public int Cantidad { get; set; }
 		[Required]
 		public decimal Precio { get; set; }
-		public Compra Compra { get; set; }
-		public Producto Producto { get; set; }
+		[Required]
+		public decimal Descuento { get; set; }
 	}
 }
